@@ -7,7 +7,7 @@ public class Main{
         MWIS x= new MWIS();
         double[][] messagesOneCurr = new double[5][5];
         double[][] messagesZeroCurr = new double[5][5];
-        double[] trackscores =  {1,2,3,4,5};
+        double[] trackscores = {0, 4, 4, 0, 1};
         int[] independentset = new int[5];
         int[] independentsetprev;
         independentsetprev= new int[]{0, 0, 0, 0, 0};
@@ -22,7 +22,7 @@ public class Main{
         };
 
         Messages messagesCurr=new Messages(messagesOneCurr,messagesZeroCurr);
-        int k=0;
+        //int k=0;
         for(;;){
 
             messagesCurr=x.getAllMessages(messagesCurr,adj,trackscores); //getting all messages for current iteration
@@ -33,14 +33,14 @@ public class Main{
             //check convergence
             if(x.checkconvergence(independentsetprev,independentset)==1) break;
 
-
-            independentsetprev=independentset;
+            System.out.println(Arrays.toString(independentset));
+            independentsetprev = independentset;
         }
 
 
         //print independent set
         System.out.println(Arrays.toString(independentset));
-        System.out.println(k);
+        //System.out.println(k);
     }
 
 }
