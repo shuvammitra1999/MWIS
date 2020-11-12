@@ -7,7 +7,7 @@ public class Main{
         MWIS x= new MWIS();
         double[][] messagesOneCurr = new double[5][5];
         double[][] messagesZeroCurr = new double[5][5];
-        double[] trackscores =  {0,4,4,0,10};
+        double[] trackscores =  {1,2,3,4,5};
         int[] independentset = new int[5];
         int[] independentsetprev;
         independentsetprev= new int[]{0, 0, 0, 0, 0};
