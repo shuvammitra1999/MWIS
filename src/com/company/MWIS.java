@@ -2,8 +2,8 @@ package com.company;
 
 public class MWIS {
 
-    float messagePassing(double[][] messagesPrev, int i, int j, int[][] adj) {
-        float product = 1;
+    double messagePassing(double[][] messagesPrev, int i, int j, int[][] adj) {
+        double product = 1;
 
         for (int k = 0; k < 5; k++) {
 
@@ -26,7 +26,7 @@ public class MWIS {
                 if (adj[i][j] == 1) { //check so that only adjacent vertices pass messages
                     //according to EQN 17
                     messagesOneCurr[i][j] = messagePassing(messagesPrev.messagesZero, i, j, adj);
-                    messagesZeroCurr[i][j] = (float) Math.max(messagesOneCurr[i][j], (Math.exp(trackscores[i]) * messagePassing(messagesPrev.messagesOne, i, j, adj)));
+                    messagesZeroCurr[i][j] = (double) Math.max(messagesOneCurr[i][j], (Math.exp(trackscores[i]) * messagePassing(messagesPrev.messagesOne, i, j, adj)));
                 }
 
             }
@@ -40,7 +40,7 @@ public class MWIS {
 
         for (i = 0; i < 5; i++)
             for (j = 0; j < 5; j++) {
-                messagezero[i][j] = (float) Math.exp(trackscore[i]);
+                messagezero[i][j] = (double) Math.exp(trackscore[i]);
                 messageone[i][j] = 1;
                 independentset[i] = 0;
             }
@@ -48,7 +48,7 @@ public class MWIS {
     }
 
     int checkconvergence(int[] independentsetprev, int[] independentsetcur) {
-        int flag = 1;
+        int flag = 0;
         for (int i = 0; i < 5; i++) {
             if (independentsetcur[i] != independentsetprev[i]) {
                 flag = 0;
@@ -60,7 +60,7 @@ public class MWIS {
 
     void updateBelief(int nodes, double[][] messagesZeroCurr, double[][] messagesOneCurr, int i, int[] indpSet, double[] trackScores, int[][] adj){
         double b0=1, b1;
-        b1= java.lang.Math.exp(trackScores[i]);
+        b1 = (double) java.lang.Math.exp(trackScores[i]);
         for(int k=0; k<nodes; k++)
 
         {
