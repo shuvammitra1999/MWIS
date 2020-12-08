@@ -10,9 +10,8 @@ public class Main{
         double[][] messagesZeroCurr = new double[n][n];
         double[] trackscores = {3.4, 9.1, 7.5, 4.8, 10.1};
         int[] independentset = new int[n];
-        int[] independentsetprev;
-        independentsetprev= new int[]{0, 0, 0, 0, 0};
-        x.initialise(n,messagesZeroCurr,messagesOneCurr,trackscores,independentset);
+        int[] independentsetprev = new int[n];
+        x.initialise(n,messagesZeroCurr,messagesOneCurr,trackscores,independentset,independentsetprev);
 
         int [][] adj= {
                 {0, 1, 1, 0, 0},
@@ -21,9 +20,10 @@ public class Main{
                 {0, 1, 1, 0, 1},
                 {0, 0, 1, 1, 0}
         };
+//
 
         Messages messagesCurr=new Messages(messagesOneCurr,messagesZeroCurr);
-        //int k=0;
+//        int k=0;
         for(;;) {
 
             messagesCurr = x.getAllMessages(n,messagesCurr, adj, trackscores); //getting all messages for current iteration
@@ -33,7 +33,7 @@ public class Main{
 
             //check convergence
             //if(x.checkconvergence(independentsetprev,independentset)==1) break;
-            //System.out.println(Arrays.toString(independentset));
+            System.out.println(Arrays.toString(independentset));
             if (java.util.Arrays.equals(independentsetprev, independentset)) break;
             independentsetprev = independentset.clone();
 
